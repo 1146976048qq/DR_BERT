@@ -1,2 +1,2 @@
-# Dynamic_T
+# Dyn_T
  Code for ABSA
