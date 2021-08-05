@@ -10,7 +10,7 @@ from deepqa_models.transformer.transformer import ScaledDotProductAttention, clo
 
 class BertForAspect(BertForSequenceClassification):
     """
-    Bert For aspect term Task
+    Bert For aspect Task
     """
     def __init__(self, config, params):
         super(BertForAspect, self).__init__(config, params['n_labels'])
