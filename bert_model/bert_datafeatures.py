@@ -36,23 +36,6 @@ class BertInputFeatures(object):
         self.max_seq_len = max_seq_len
         self.tokenizer = tokenizer
         self.label_proc = label_proc
-        
-    def pad_sentence(self, tokens_a, tokens_b):
-        """
-        Args:
-          token_a: str 
-          token_b: str
-        """
-        while True:
-            total_length = len(tokens_a) + len(tokens_b)
-            if total_length <= self.max_seq_len-3:
-                break
-            if len(tokens_a) > len(tokens_b):
-                tokens_a.pop()
-            else:
-                tokens_b.pop()
-
-        return tokens_a, tokens_b
     
     def convert_single_words2id(self, example, idx):
         """
