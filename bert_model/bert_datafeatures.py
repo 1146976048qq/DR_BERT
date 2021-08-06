@@ -77,14 +77,22 @@ class BertInputFeatures(object):
         input_mask += padding
         segment_ids += padding
 
-        if idx < 5:
+        # if idx < 5:
+        #     logging.info("*** Example ***")
+        #     logging.info("guid: %s" % (example.guid))
+        #     logging.info("tokens: %s" % " ".join([str(x) for x in tokens]))
+        #     logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+        #     logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
+        #     logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
+        
+        if idx < 10:
             logging.info("*** Example ***")
             logging.info("guid: %s" % (example.guid))
             logging.info("tokens: %s" % " ".join([str(x) for x in tokens]))
             logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
             logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
             logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-        
+
         assert len(input_ids) == self.max_seq_len
         assert len(input_mask) == self.max_seq_len
         assert len(segment_ids) == self.max_seq_len
@@ -146,27 +154,27 @@ class BertInputFeatures(object):
         pass
 
 
-# import logging
+import logging
 
-# class InputExample(object):
-#     """A single training/test example for simple sequence classification."""
+class InputExample(object):
+    """A single training/test example for simple sequence classification."""
 
-#     def __init__(self, guid, text_a, text_b=None, label=None):
-#         """Constructs a InputExample.
+    def __init__(self, guid, text_a, text_b=None, label=None):
+        """Constructs a InputExample.
 
-#         Args:
-#             guid: Unique id for the example.
-#             text_a: string. The untokenized text of the first sequence. For single
-#             sequence tasks, only this sequence must be specified.
-#             text_b: (Optional) string. The untokenized text of the second sequence.
-#             Only must be specified for sequence pair tasks.
-#             label: (Optional) string. The label of the example. This should be
-#             specified for train and dev examples, but not for test examples.
-#         """
-#         self.guid = guid
-#         self.text_a = text_a
-#         self.text_b = text_b
-#         self.label = label
+        Args:
+            guid: Unique id for the example.
+            text_a: string. The untokenized text of the first sequence. For single
+            sequence tasks, only this sequence must be specified.
+            text_b: (Optional) string. The untokenized text of the second sequence.
+            Only must be specified for sequence pair tasks.
+            label: (Optional) string. The label of the example. This should be
+            specified for train and dev examples, but not for test examples.
+        """
+        self.guid = guid
+        self.text_a = text_a
+        self.text_b = text_b
+        self.label = label
 
 # class InputFeatures(object):
 #     """A single set of features of data."""
