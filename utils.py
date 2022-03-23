@@ -8,10 +8,6 @@ import time
 from datetime import timedelta
 
 
-MAX_VOCAB_SIZE = 10000  # 词表长度限制
-UNK, PAD = '<UNK>', '<PAD>'  # 未知字，padding符号
-
-
 def build_vocab(file_path, tokenizer, max_size, min_freq):
     vocab_dic = {}
     with open(file_path, 'r', encoding='UTF-8') as f:
@@ -127,8 +123,6 @@ def get_time_dif(start_time):
 
 
 if __name__ == "__main__":
-    '''提取预训练词向量'''
-    # 下面的目录、文件名按需更改。
     train_dir = "./THUCNews/data/kkzhang_train.txt"
     vocab_dir = "./THUCNews/data/vocab.pkl"
     pretrain_dir = "./THUCNews/data/sgns.sogou.char"
