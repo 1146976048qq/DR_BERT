@@ -91,15 +91,6 @@ class DatasetIterater(object):
     #         batches = self._to_tensor(batches)
     #         return batches
 
-    #     elif self.index >= self.n_batches:
-    #         self.index = 0
-    #         raise StopIteration
-    #     else:
-    #         batches = self.batches[self.index * self.batch_size: (self.index + 1) * self.batch_size]
-    #         self.index += 1
-    #         batches = self._to_tensor(batches)
-    #         return batches
-
     def __iter__(self):
         return self
 
@@ -113,7 +104,11 @@ class DatasetIterater(object):
 # def build_iterator(dataset, config):
 #     iter = DatasetIterater(dataset, config.batch_size, config.device)
 #     return iter
-
+    def __len__(self):
+        if self.residue:
+            return self.n_batches + 1
+        else:
+            return self.n_batches
 
 # def get_time_dif(start_time):
 #     """获取已使用时间"""
