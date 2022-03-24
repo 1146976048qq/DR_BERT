@@ -84,21 +84,21 @@ class DatasetIterater(object):
         seq_len = torch.LongTensor([_[2] for _ in datas]).to(self.device)
         return (x, seq_len), y
 
-    def __next__(self):
-        if self.residue and self.index == self.n_batches:
-            batches = self.batches[self.index * self.batch_size: len(self.batches)]
-            self.index += 1
-            batches = self._to_tensor(batches)
-            return batches
+    # def __next__(self):
+    #     if self.residue and self.index == self.n_batches:
+    #         batches = self.batches[self.index * self.batch_size: len(self.batches)]
+    #         self.index += 1
+    #         batches = self._to_tensor(batches)
+    #         return batches
 
-        elif self.index >= self.n_batches:
-            self.index = 0
-            raise StopIteration
-        else:
-            batches = self.batches[self.index * self.batch_size: (self.index + 1) * self.batch_size]
-            self.index += 1
-            batches = self._to_tensor(batches)
-            return batches
+    #     elif self.index >= self.n_batches:
+    #         self.index = 0
+    #         raise StopIteration
+    #     else:
+    #         batches = self.batches[self.index * self.batch_size: (self.index + 1) * self.batch_size]
+    #         self.index += 1
+    #         batches = self._to_tensor(batches)
+    #         return batches
 
     def __iter__(self):
         return self
@@ -110,15 +110,15 @@ class DatasetIterater(object):
             return self.n_batches
 
 
-def build_iterator(dataset, config):
-    iter = DatasetIterater(dataset, config.batch_size, config.device)
-    return iter
+# def build_iterator(dataset, config):
+#     iter = DatasetIterater(dataset, config.batch_size, config.device)
+#     return iter
 
 
-def get_time_dif(start_time):
-    """获取已使用时间"""
-    end_time = time.time()
-    time_dif = end_time - start_time
+# def get_time_dif(start_time):
+#     """获取已使用时间"""
+#     end_time = time.time()
+#     time_dif = end_time - start_time
     return timedelta(seconds=int(round(time_dif)))
 
 
