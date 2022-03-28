@@ -1,13 +1,6 @@
 from .text_processor_base import TextProcessorBase
 
 class SentenceProcessor(TextProcessorBase):
-    """
-    Conventions: 
-        inputs: str or list of str
-        str must be seperated by blank space
-    preprocess the text corpus, create word2index, index2word map, pad sentence, 
-    transform text to wordindex sequences, decode sequences to original raw text
-    """
     def __init__(self, lower=False, start_tok='<sos>', end_tok='<eos>', unk_tok='<unk>', pad_tok='<pad>',
                  use_start=False, use_end=False, use_unk=True, use_pad=True):
         super(SentenceProcessor, self).__init__()
@@ -68,12 +61,6 @@ class SentenceProcessor(TextProcessorBase):
         return dict(self.word_cnts)
     
     def get_sents_length(self, sents):
-        """
-        calculate sentences length
-        level 2: multiple sentences
-        Args:
-            sents: list of str
-        """
         sents_length = []
         for sent in sents:
             sents_length.append(len(sent.split()))
@@ -157,31 +144,15 @@ class SentenceProcessor(TextProcessorBase):
 
     def transform(self, sents, max_seq_len=0, add_start=False, add_end=False, return_sents_length=False,
                   return_padded_length=False, return_array=True):
-        """
-        convert sentences to word index
-        pad or truncate sentences to a fixed seq_len
-        Args:
-            sents: level 2, list of str
-            max_seq_len: the fixed length that all sentences must be converted to
-            add_start: add start_token in the beginning of sentence
-            add_end: add end_token at the end of sentence
-            return_sents_length: bool
-            return_padded_length: bool
-            return_array: bool
-        """
         import numpy as np
-        #print('sent_proc transform ')
         sents_seq, sents_length = self.texts_to_sequences(sents)
-        #print('sent_proc text_to_sequence ')
         sents_seq_padded = self.pad_sequences(sents_seq, max_seq_len=max_seq_len, add_start=add_start, add_end=add_end)
-        #print('sent_proc pad_sequence ')
         
         if return_padded_length:
             sents_length = self.get_padded_sents_length(len(sents), max_seq_len)
         if return_array:
             sents_seq_padded = np.array(sents_seq_padded)
             sents_length = np.array(sents_length)
-        #print('sent_proc if pad ')
         
         if return_sents_length:
             return sents_seq_padded, sents_length
@@ -189,10 +160,6 @@ class SentenceProcessor(TextProcessorBase):
             return sents_seq_padded
 
     def texts_to_sequences(self, sents):
-        """
-        Args:
-            sents: level 2, list of str
-        """
         sents_seq = []
         sents_length = [] # actual length of each sentence
         for sent in sents:
@@ -210,13 +177,6 @@ class SentenceProcessor(TextProcessorBase):
         return sents_seq, sents_length
     
     def pad_sequences(self, sents_seq, max_seq_len=0, add_start=False, add_end=False):
-        """
-        Args:
-            sents_seq: list of list of int
-            max_seq_len: the fixed length that all sentences must be converted to
-            add_start: add start_token in the beginning of sentence
-            add_end: add end_token at the end of sentence
-        """
         assert (max_seq_len!=0 or self.max_seq_len!=0), ('must specify a max_seq_len of sequence')
         if max_seq_len==0: 
             max_seq_len = self.max_seq_len
@@ -243,11 +203,6 @@ class SentenceProcessor(TextProcessorBase):
         return self.decode_sequences(sents_seq, reverse=reverse, keepdim=keepdim)
     
     def decode_sequences(self, sents_seq, reverse=False, keepdim=False):
-        """
-        decode docs_seq from word2index to inde2word
-        if reverse==True, docs_seq ends with start_tok
-        otherwise, it starts from start_tok
-        """
         from collections import Iterable
         if len(sents_seq)>0 and (not isinstance(sents_seq[0], Iterable)):
             sents_seq = [list(sents_seq)]
