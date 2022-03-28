@@ -101,7 +101,7 @@ class DatasetIterater(object):
             return self.n_batches
 
 
-# def build_iterator(dataset, config):
+#   def build_iterator(dataset, config):
 #     iter = DatasetIterater(dataset, config.batch_size, config.device)
 #     return iter
     def __len__(self):
@@ -109,13 +109,6 @@ class DatasetIterater(object):
             return self.n_batches + 1
         else:
             return self.n_batches
-
-# def get_time_dif(start_time):
-#     """获取已使用时间"""
-#     end_time = time.time()
-#     time_dif = end_time - start_time
-    return timedelta(seconds=int(round(time_dif)))
-
 
 if __name__ == "__main__":
     train_dir = "./THUCNews/data/kkzhang_train.txt"
