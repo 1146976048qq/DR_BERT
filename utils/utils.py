@@ -80,17 +80,9 @@ class DatasetIterater(object):
         x = torch.LongTensor([_[0] for _ in datas]).to(self.device)
         y = torch.LongTensor([_[1] for _ in datas]).to(self.device)
 
-        # pad前的长度(超过pad_size的设为pad_size)
         seq_len = torch.LongTensor([_[2] for _ in datas]).to(self.device)
         return (x, seq_len), y
-
-    # def __next__(self):
-    #     if self.residue and self.index == self.n_batches:
-    #         batches = self.batches[self.index * self.batch_size: len(self.batches)]
-    #         self.index += 1
-    #         batches = self._to_tensor(batches)
-    #         return batches
-
+    
     def __iter__(self):
         return self
 
