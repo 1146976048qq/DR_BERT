@@ -2,7 +2,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch
 from base.base_model import BaseModel
-from utils.model_utils import prepare_pack_padded_sequence
+from utils.model_utils import prepare_pack_padded_sequence, prepare_pack_padded_sequence_asp, function as F
 from transformers import BertModel
 
 
@@ -202,13 +202,19 @@ class DRBert(nn.Module):
         # self.w = nn.Parameter(torch.randn(hidden_dim * 2), requires_grad=True)
         # self.fc = nn.Linear(hidden_dim * 2, num_classes)
 
-    def forward(self, text, bert_masks, seq_lens):
+    def forward(self, text, aspect, bert_masks, seq_lens, asp_len):
         # text shape: [batch_size, seq_len]
         bert_sentence, bert_cls = self.bert(text, attention_mask=bert_masks)
+        # aspect shape: [batch_size, asp_len]
+        bert_aspect, bert_cls_asp = self.bert(aspect, attention_mask=bert_masks)
         # bert_sentence shape: [batch_size, sen_len, H=768]
         # bert_cls shape: [batch_size, H=768] # cls 不用于预测
         bert_sentence, sorted_seq_lengths, desorted_indices = prepare_pack_padded_sequence(bert_sentence, seq_lens)
-        packed_embedded = nn.utils.rnn.pack_padded_sequence(bert_sentence, sorted_seq_lengths,
+        bert_aspect = prepare_pack_padded_sequence_asp(bert_aspect, asp_len)
+
+        bert_con = F(bert_sentence, bert_aspect)
+
+        packed_embedded = nn.utils.rnn.pack_padded_sequence(bert_con, sorted_seq_lengths,
                                                             batch_first=self.batch_first)
         if self.rnn_type in ['rnn', 'gru']:
             packed_output, hidden = self.rnn(packed_embedded)
