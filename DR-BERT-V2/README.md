@@ -27,11 +27,3 @@
 - BERT， BERT+TextCNN2D， BERT+Bi-LSTM+Attention， BERT+RCNN 
 ![](./doc/train5.png)
 
-
-## 实验结果
-- ![](./doc/result.png)
-
-
-
-## 参考
-[https://github.com/jeffery0628/text_classification](https://github.com/jeffery0628/text_classification)
