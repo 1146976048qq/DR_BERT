@@ -211,7 +211,7 @@ class DRBert(nn.Module):
         # bert_cls shape: [batch_size, H=768] # cls 不用于预测
         bert_sentence, sorted_seq_lengths, desorted_indices = prepare_pack_padded_sequence(bert_sentence, seq_lens)
         bert_aspect = prepare_pack_padded_sequence_asp(bert_aspect, asp_len)
-
+        # F function(i.e., dynamic re-weighting function)
         bert_con = F(bert_sentence, bert_aspect)
 
         packed_embedded = nn.utils.rnn.pack_padded_sequence(bert_con, sorted_seq_lengths,
