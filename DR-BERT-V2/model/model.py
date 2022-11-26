@@ -226,7 +226,7 @@ class DRBert(nn.Module):
         # output = [batch_size, seq_len, hidden_dim * bidirectional]
         output = output[desorted_indices]
 
-        # 注意力机制,可以理解为对每个词的权重
+        # 添加: 注意力机制
         m = self.tanh(output)
         score = torch.matmul(m, self.w)
         alpha = F.softmax(score, dim=0).unsqueeze(-1)
