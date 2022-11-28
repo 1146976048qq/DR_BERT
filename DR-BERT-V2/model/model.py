@@ -21,11 +21,11 @@ class MLP(BaseModel):
         self.output_dim = output_dim
         self.embedding = nn.Embedding.from_pretrained(torch.from_numpy(word_embedding.vectors), freeze=freeze)
 
-        # 隐藏层数
+        # 隐藏层数, 1层
         self.num_hidden_layers = needed_by_mlp_num_hidden_layers
-        # 最大文本次长度
+        # 最大文本次长度, 100
         self.max_seq_len = needed_by_mlp_max_seq_len
-        # 对文本padding部分做全零初始化
+        # 对文本padding部分做全零初始化, 100 * 300
         # self.embedding.weight.data[1]，即stoi['PAD']
         self.embedding.weight.data[1] = torch.zeros(self.embedding_dim)
 
