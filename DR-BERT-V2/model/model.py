@@ -139,16 +139,16 @@ class DRBert(nn.Module):
                  dropout, num_classes, trained):
         """
 
-        :param rnn_type:
-        :param bert_path:
-        :param hidden_dim:
-        :param n_layers:
+        :param rnn_type: rnn类型
+        :param bert_path: bert预训练模型路径
+        :param hidden_dim: rnn隐藏层维度
+        :param n_layers: rnn层数
         # :param bidirectional: 这里是True
         :param batch_first: 这里是True，配置json文件里写了
-        :param word_embedding:
-        :param dropout:
-        :param num_classes:
-        :param trained:
+        :param word_embedding: None
+        :param dropout: dropout
+        :param num_classes: 分类数
+        :param trained: 是否训练bert参数
         """
         super(DRBert, self).__init__()
         self.bidirectional = bidirectional
