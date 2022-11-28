@@ -59,16 +59,16 @@ class MLP(BaseModel):
                 nn.Linear(self.hidden_dim, self.output_dim),
             )
 
-    def forward(self, text, _, text_lengths):
+    def forward(self, text, _, text_lengths): 
         # text [batch_size, seq_len]
 
         embedded = self.embedding(text).float()
 
-        # embedded [batch_size, seq_len, emb_dim]
+        # embedded [batch_size, seq_len, emb_dim],
 
         embedded_ = embedded.view(embedded.size(0), -1)
 
-        # embedded_ [batch_size, seq_len * emb_dim]
+        # embedded_ [batch_size, seq_len * emb_dim], 100 * 300
 
         out = self.mlp(embedded_)
 
@@ -77,7 +77,7 @@ class MLP(BaseModel):
         return out
 
 
-class Bert(BaseModel):
+class Bert(BaseModel):  
     def __init__(self, bert_path, num_classes, word_embedding, trained=True):
         """
 
@@ -119,7 +119,7 @@ class Bert(BaseModel):
         # context [batch_size, sen_len]
 
         # context传入bert模型，bert_masks标识要预测的部分
-        _, cls = self.bert(context, attention_mask=bert_masks)
+        _, cls = self.bert(context, attention_mask=bert_masks)  
         # _ [batch_size, sen_len, H=768]
         # cls [batch_size, H=768]
 
