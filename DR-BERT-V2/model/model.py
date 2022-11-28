@@ -151,8 +151,8 @@ class DRBert(nn.Module):
         :param trained: 是否训练bert参数
         """
         super(DRBert, self).__init__()
-        self.bidirectional = bidirectional
-        self.n_layers = n_layers
+        self.bidirectional = bidirectional 
+        self.n_layers = n_layers  
         self.hidden_dim = hidden_dim
         self.batch_first = batch_first
         self.dropout = nn.Dropout(dropout)
@@ -174,7 +174,7 @@ class DRBert(nn.Module):
         elif rnn_type == 'gru':
             # 输入维度为bert的隐藏层维度
             self.rnn = nn.GRU(self.bert.config.to_dict()['hidden_size'],
-                              hidden_size=hidden_dim,
+                              hidden_size=hidden_dim, 
                               num_layers=n_layers,
                             #   bidirectional=bidirectional,
                               batch_first=batch_first,
@@ -183,7 +183,7 @@ class DRBert(nn.Module):
             self.rnn = nn.RNN(self.bert.config.to_dict()['hidden_size'],
                               hidden_size=hidden_dim,
                               num_layers=n_layers,
-                              bidirectional=bidirectional,
+                              bidirectional=bidirectional, 
                               batch_first=batch_first,
                               dropout=dropout)
         # 配置 bidirectional 为单向，这里的hidden_dim就是bert的隐藏层维度
