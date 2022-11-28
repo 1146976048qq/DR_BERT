@@ -7,10 +7,6 @@ from transformers import BertModel
 
 
 class MLP(BaseModel):
-    """
-    MLP
-    """
-
     def __init__(self, hidden_dim, output_dim, dropout, word_embedding, freeze,
                  needed_by_mlp_num_hidden_layers, needed_by_mlp_max_seq_len):
         """
@@ -82,10 +78,6 @@ class MLP(BaseModel):
 
 
 class Bert(BaseModel):
-    """
-    Bert
-    """
-
     def __init__(self, bert_path, num_classes, word_embedding, trained=True):
         """
 
