@@ -167,23 +167,23 @@ def run(config_file):
 
 if __name__ == '__main__':
     run('configs/mlp/mlp_1h_config.json')
-    # run('configs/mlp/mlp_2h_config.json')
-    # run('configs/mlp/mlp_4h_config.json')
-    # # ------------
-    # run('configs/textcnn/textcnn_1d_config.json')
-    # run('configs/textcnn/textcnn_2d_config.json')
-    # # ------------
-    # run('configs/rnn/rnn_config.json')
-    # run('configs/rnn/lstm_config.json')
-    # run('configs/rnn/gru_config.json')
-    # # ------------
-    # run('configs/attention/rnn_attention_config.json')
-    # # ------------
-    # run('configs/textrcnn/textrcnn_config.json')
-    # # ------------
-    # run('configs/bert/bert_config.json')
-    # run('configs/bert/bert_cnn_config.json')
-    # run('configs/bert/bert_rnn_attention_config.json')
-    # run('configs/bert/bert_rcnn_config.json')
-    # # ------------
-    # run('configs/new/final_config.json')
+    run('configs/mlp/mlp_2h_config.json')
+    run('configs/mlp/mlp_4h_config.json')
+    # ------------
+    run('configs/textcnn/textcnn_1d_config.json')
+    run('configs/textcnn/textcnn_2d_config.json')
+    # ------------
+    run('configs/rnn/rnn_config.json')
+    run('configs/rnn/lstm_config.json')
+    run('configs/rnn/gru_config.json')
+    # ------------
+    run('configs/attention/rnn_attention_config.json')
+    # ------------
+    run('configs/textrcnn/textrcnn_config.json')
+    # ------------
+    run('configs/bert/bert_config.json')
+    run('configs/bert/bert_cnn_config.json')
+    run('configs/bert/bert_rnn_attention_config.json')
+    run('configs/bert/bert_rcnn_config.json')
+    # ------------
+    run('configs/new/final_config.json')
