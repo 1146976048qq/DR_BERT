@@ -157,6 +157,7 @@ class DRBert(nn.Module):
         self.batch_first = batch_first
         self.dropout = nn.Dropout(dropout)
         self.tanh = nn.Tanh()
+        # bert-based model
         self.bert = BertModel.from_pretrained(bert_path)
         for param in self.bert.parameters():
             param.requires_grad = trained
