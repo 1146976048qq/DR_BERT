@@ -1,7 +1,7 @@
 # aspect-based sentiment-analysis
 
 
-## The code/model is updating...[ We are working on expanding it into a journal! ]
+## The code/model is updating...[ We are working on expanding it into a journal! ] 
 ## 框架
 - PyTorch
 - huggingface/transformers
@@ -25,7 +25,6 @@
 ## 训练过程
 
 ![](./doc/train1.png)
-
 
 ![](./doc/train5.png)
 
