@@ -45,7 +45,6 @@ np.random.seed(SEED)
 def main(config, use_transformers):
     """
     训练的时候,同一种类型的模型，用同一种类型的嵌入pkl
-    跑不了bert，把下载模型里面的改为config.json
     """
     # 获取这个'train'日志名，的logger
     logger = config.get_logger('train')

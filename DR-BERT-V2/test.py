@@ -248,7 +248,7 @@ def main_threshold(config, use_transformers, threshold):
         f1_avg = f1_sum / bert_batch_num
         auc_avg = auc_sum / bert_batch_num
 
-    # #         # 普通时候
+    #         # 普通时候
     #             acc_ok = module_metric.binary_accuracy_threshold(output, class_labels, threshold)
     #             p_ok = module_metric.binary_precision_threshold(output, class_labels, threshold)
     #             r_ok = module_metric.binary_recall_threshold(output, class_labels, threshold)
