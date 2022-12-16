@@ -385,13 +385,13 @@ if __name__ == '__main__':
     #     'configs/bert/bert_cnn_config.json',
     #     'saved/bert_cnn/models/0709_042735/checkpoint-epoch6.pth',
     #     threshold_start=0.97, threshold_end=0.97)
-    # # =======================================================
-    # find_best_threshold(
-    #     'configs/bert/bert_rnn_attention_config.json',
-    #     'saved/bert_rnn_attention/models/0709_091857/checkpoint-epoch4.pth',
-    #     threshold_start=0.89, threshold_end=0.89)
-    # # =======================================================
-    # find_best_threshold(
-    #     'configs/bert/bert_rcnn_config.json',
-    #     'saved/bert_rcnn/models/0709_064734/checkpoint-epoch2.pth',
-    #     threshold_start=0.93, threshold_end=0.93)
+    # =======================================================
+    find_best_threshold(
+        'configs/bert/bert_rnn_attention_config.json',
+        'saved/bert_rnn_attention/models/0709_091857/checkpoint-epoch4.pth',
+        threshold_start=0.89, threshold_end=0.89)
+    # =======================================================
+    find_best_threshold(
+        'configs/bert/bert_rcnn_config.json',
+        'saved/bert_rcnn/models/0709_064734/checkpoint-epoch2.pth',
+        threshold_start=0.93, threshold_end=0.93)
