@@ -22,9 +22,9 @@
   - DR-BERT
 
 
-## 训练过程
+<!-- ## 训练过程
 
 ![](./doc/train1.png)
 
 ![](./doc/train5.png)
-
+ -->

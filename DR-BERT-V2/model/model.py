@@ -233,8 +233,8 @@ class DRBert(nn.Module):
         output = torch.sum(output, dim=1)
         # output [batch_size, hidden_dim * bidirectional]
         fc_input = self.dropout(output + output_attention + hidden)
-        ### fc_input [batch_size, hidden_dim * bidirectional]
+        # fc_input [batch_size, hidden_dim * bidirectional]
         out = self.fc(fc_input)
-        ### out [batch_size, num_classes]
+        # out [batch_size, num_classes]
 
         return out
